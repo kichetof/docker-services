@@ -6,6 +6,15 @@ source /etc/colors.sh
 
 PREFFIX="[services.d] [rclone-mount]-$(s6-basename ${0}):"
 
+## Change UID & GID to match user host
+if [ ! -z "${UID}" ] && [ ! -z "${GID}" ]; then
+    ## ECHO DEBUG
+    if [ "$DEBUG" = true ]; then
+        echo -e "${PREFFIX} [DEBUG] command: chown -R $UID:$GID $MountPoint"
+    fi
+    chown -R $UID:$GID $MountPoint
+fi
+
 echo -e "${PREFFIX} ${Green}starting rclone mount $(date +%Y.%m.%d-%T)${Color_Off}"
 
 ## ECHO DEBUG

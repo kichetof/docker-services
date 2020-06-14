@@ -11,7 +11,9 @@ ENV DEBUG="false" \
     ConfigDir="/config" \
     ConfigName=".rclone.conf" \
     MountCommands="--allow-other --allow-non-empty" \
-    UnmountCommands="-u -z"
+    UnmountCommands="-u -z" \
+    UID= \
+    GID=
 
 ## Alpine with Go Git
 RUN apk --no-cache upgrade \
