@@ -31,7 +31,8 @@ RUN apk --no-cache upgrade \
     && cp /go/bin/rclone /usr/sbin/ \
     && rm -rf /go || true \
     && apk del alpine-sdk go git gnupg \
-    && rm -rf /tmp/* /var/cache/apk/* /var/lib/apk/lists/*
+    && rm -rf /tmp/* /var/cache/apk/* /var/lib/apk/lists/* \
+    && adduser -D -g '' rclone users
 
 COPY rootfs/ /
 

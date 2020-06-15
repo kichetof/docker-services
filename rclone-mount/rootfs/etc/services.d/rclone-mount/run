@@ -12,6 +12,8 @@ if [ ! -z "${UID}" ] && [ ! -z "${GID}" ]; then
     if [ "$DEBUG" = true ]; then
         echo -e "${PREFFIX} [DEBUG] command: chown -R $UID:$GID $MountPoint"
     fi
+    usermod -o -u "${UID}" rclone
+    groupmod -o -g "${GID}" rclone
     chown -R $UID:$GID $MountPoint
 fi
 
